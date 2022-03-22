@@ -4,3 +4,5 @@ env/
 # ini files #
 *.ini
 *.json
+# LOG files
+*.log
