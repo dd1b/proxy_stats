@@ -1,0 +1,6 @@
+# Don't track content of these folders
+dir_proxies/
+env/
+# ini files #
+*.ini
+*.json
