@@ -109,6 +109,7 @@ def export_data_to_sheet(service, df):
     """
     global ex
     df = df.fillna(0)
+    df = df.sort_index()
     df = df.rename_axis('Date').reset_index()
     data = [df.columns.values.tolist()]
     data.extend(df.values.tolist())
@@ -123,14 +124,14 @@ def export_data_to_sheet(service, df):
     # determine range of google sheet
     _no_of_columns = len(data[0])
     _segments = math.floor(_no_of_columns / 26)
-    range_name = "B1:EZ1000"
+    range_name = "DATA!B1:EZ1000"
     if _segments > 1:
         if _segments < 26 * 25:  # there are 195 contries worldwide...but still....
             _first_letter = (chr(ord('a') + (_segments - 1))).upper()
             _second_letter_position = math.ceil(
                 (_no_of_columns / 26 - _segments) * 26) + 1  # +1 because we will write starting with B column
             _second_letter = (chr(ord('a') + _second_letter_position)).upper()
-            range_name = "B1:{}{}{}".format(_first_letter, _second_letter, len(data))
+            range_name = "DATA!B1:{}{}{}".format(_first_letter, _second_letter, len(data))
         else:
             print("Something bad happened...too many CC generated in raw data")
             return 0
@@ -156,7 +157,7 @@ def get_data_from_files(dir_name):
                               -> SOCKET -> IP:PORT : NoOfAppearances
     """
     my_dict = {}
-    for root, dirs, files in os.walk(dir_name):
+    for root, dirs, files in os.walk(dir_path+"/"+dir_name):
         if len(dirs) == 0:
             _day = root.split("/")[-1]
             my_dict[_day] = {}
