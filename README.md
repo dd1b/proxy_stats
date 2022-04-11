@@ -1,7 +1,7 @@
 # proxy_stats
 Statistics for free proxy servers
 
-Starting with OCT2021 I got all public available proxy IP's from dedicated sites and I am trying to do some statistics about attribution of cyberattacks and false flag actions.
+Starting with OCT2021 I got all public available proxy IP's from dedicated sites and I am trying to do statistics about attribution of cyberattacks and false flag actions.
 
 
 
